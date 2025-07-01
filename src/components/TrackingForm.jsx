@@ -1,7 +1,10 @@
 import { Box, Button, TextField, MenuItem } from '@mui/material';
 import { Formik, Form } from 'formik';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
+import { addExpenseRequest } from '../store/ducks/expenses';
 const categories = [
   'Food',
   'Transport',
@@ -30,15 +33,21 @@ const InputContainer = styled(Box)`
 `;
 
 const TrackingForm = () => {
-  console.log('TrackingForm rendered');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onSubmit = (values, actions) => {
+    dispatch(addExpenseRequest({ ...values, id: Date.now() }));
+    actions.resetForm();
+    navigate('/');
+    console.log('Submitting:', expense);
+  };
+
   return (
     <Formik
       initialValues={{ category: '', amount: '', date: '' }}
       validationSchema={validationSchema}
-      onSubmit={(values, action) => {
-        console.log('Saved:', values);
-        action.resetForm();
-      }}
+      onSubmit={onSubmit}
     >
       {({
         handleSubmit,
@@ -86,7 +95,7 @@ const TrackingForm = () => {
             helperText={touched.amount && errors.amount}
             required
           />
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" type="submit">
             Add Expense
           </Button>
         </InputContainer>

@@ -1,19 +1,24 @@
 import { List, ListItem, ListItemText } from '@mui/material';
+import styled from 'styled-components';
 
-const expensesList = [
-  { id: 1, date: '2025-06-01', category: 'Food', amount: 50 },
-  { id: 2, date: '2025-06-02', category: 'Transport', amount: 20 },
-  { id: 3, date: '2025-06-03', category: 'Entertainment', amount: 30 },
-];
+const EmptyMess = styled.h4`
+  text-align: center;
+  font-weight: normal;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+`;
 
-const ExpenseList = ({ expenses = expensesList }) => {
+const ExpenseList = ({ expenses }) => {
+  if (!expenses || expenses.length === 0) {
+    return <EmptyMess>No found</EmptyMess>;
+  }
   return (
     <List>
       {expenses.map((expense) => (
         <ListItem key={expense.id} divider>
           <ListItemText
             primary={`${expense.date} - ${expense.category}`}
-            secondary={`$${expense.amount.toFixed(2)}`}
+            secondary={`${expense.amount.toFixed(2)}`}
           />
         </ListItem>
       ))}

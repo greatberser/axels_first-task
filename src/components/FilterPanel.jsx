@@ -1,4 +1,5 @@
-import { Box, Button, TextField } from '@mui/material';
+import { Box, Button, MenuItem, TextField } from '@mui/material';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 const FilterRow = styled(Box)`
@@ -8,7 +9,7 @@ const FilterRow = styled(Box)`
   margin-bottom: 16px;
 `;
 
-const FilterInput = styled(TextField)`
+const SelectInput = styled(TextField)`
   width: 200px;
 `;
 
@@ -21,18 +22,41 @@ const categories = [
   'Health',
 ];
 
-const FilterPanel = () => {
+const FilterPanel = ({ onFilter }) => {
+  const [date, setDate] = useState('');
+  const [category, setCategory] = useState('All');
+
+  const handleFilter = () => {
+    onFilter({
+      date,
+      category,
+    });
+  };
+
   return (
     <FilterRow>
-      <TextField type="date" variant="outlined" size="small" />
-      <FilterInput select label="Category" variant="outlined" size="small">
+      <TextField
+        type="date"
+        variant="outlined"
+        size="small"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+      />
+      <SelectInput
+        select
+        label="Category"
+        variant="outlined"
+        size="small"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >
         {categories.map((category) => (
-          <option key={category} value={category}>
+          <MenuItem key={category} value={category}>
             {category}
-          </option>
+          </MenuItem>
         ))}
-      </FilterInput>
-      <Button variant="contained" color="primary">
+      </SelectInput>
+      <Button variant="contained" color="primary" onClick={handleFilter}>
         Apply Filters
       </Button>
     </FilterRow>

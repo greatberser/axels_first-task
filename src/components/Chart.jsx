@@ -11,7 +11,7 @@ import {
 import styled from 'styled-components';
 
 const ChartContainer = styled.div`
-  height: 400px;
+  height: 500px;
   display: flex;
   justify-content: center;
   flex-direction: column;

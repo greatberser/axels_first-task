@@ -6,11 +6,11 @@ const expensesList = [
   { id: 3, date: '2025-06-03', category: 'Entertainment', amount: 30 },
 ];
 
-export const ExpenseList = ({ expenses = expensesList }) => {
+const ExpenseList = ({ expenses = expensesList }) => {
   return (
     <List>
       {expenses.map((expense) => (
-        <ListItem sx={{ color: 'black' }} key={expense.id} divider>
+        <ListItem key={expense.id} divider>
           <ListItemText
             primary={`${expense.date} - ${expense.category}`}
             secondary={`$${expense.amount.toFixed(2)}`}

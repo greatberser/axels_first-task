@@ -6,24 +6,34 @@ import {
   Link as MuiLink,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-export const Navbar = () => {
+const StyledToolbar = styled(Toolbar)`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const NavbarContainer = styled.div`
+  display: flex;
+  gap: 16px;
+`;
+
+const Navbar = () => {
   return (
     <AppBar position="static">
-      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <StyledToolbar>
         <Typography variant="h6" component="div">
           Tracker
         </Typography>
-
-        <Box sx={{ display: 'flex', gap: 2 }}>
+        <NavbarContainer>
           <MuiLink component={Link} to="/" color="inherit" underline="none">
             Home
           </MuiLink>
           <MuiLink component={Link} to="/form" color="inherit" underline="none">
             Form
           </MuiLink>
-        </Box>
-      </Toolbar>
+        </NavbarContainer>
+      </StyledToolbar>
     </AppBar>
   );
 };

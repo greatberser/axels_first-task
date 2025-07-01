@@ -8,6 +8,10 @@ const FilterRow = styled(Box)`
   margin-bottom: 16px;
 `;
 
+const FilterInput = styled(TextField)`
+  width: 200px;
+`;
+
 const categories = [
   'All',
   'Food',
@@ -17,35 +21,17 @@ const categories = [
   'Health',
 ];
 
-export const FilterPanel = () => {
+const FilterPanel = () => {
   return (
     <FilterRow>
-      <TextField
-        label="Start Date"
-        type="date"
-        variant="outlined"
-        size="small"
-        sx={{ width: '200px' }}
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-      <TextField
-        select
-        label="Category"
-        variant="outlined"
-        size="small"
-        sx={{ width: '200px' }}
-        SelectProps={{
-          native: true,
-        }}
-      >
+      <TextField type="date" variant="outlined" size="small" />
+      <FilterInput select label="Category" variant="outlined" size="small">
         {categories.map((category) => (
           <option key={category} value={category}>
             {category}
           </option>
         ))}
-      </TextField>
+      </FilterInput>
       <Button variant="contained" color="primary">
         Apply Filters
       </Button>

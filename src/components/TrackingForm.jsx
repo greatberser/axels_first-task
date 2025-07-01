@@ -1,5 +1,6 @@
 import { Box, Button, TextField, MenuItem } from '@mui/material';
 import { Formik, Form } from 'formik';
+import styled from 'styled-components';
 import * as Yup from 'yup';
 const categories = [
   'Food',
@@ -19,7 +20,16 @@ const validationSchema = Yup.object().shape({
     .required('Date is required'),
 });
 
-export const TrackingForm = () => {
+const InputContainer = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 400px;
+  margin: auto;
+  padding: 16px;
+`;
+
+const TrackingForm = () => {
   console.log('TrackingForm rendered');
   return (
     <Formik
@@ -38,21 +48,9 @@ export const TrackingForm = () => {
         touched,
         handleBlur,
       }) => (
-        <Box
-          component="form"
-          onSubmit={handleSubmit}
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 2,
-            maxWidth: 400,
-            margin: 'auto',
-            padding: 2,
-          }}
-        >
+        <InputContainer component="form" onSubmit={handleSubmit}>
           <TextField
             name="date"
-            label="Date"
             value={values.date}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -61,16 +59,6 @@ export const TrackingForm = () => {
             type="date"
             required
           />
-          {/* <TextField
-            label="Date"
-            type="date"
-            variant="outlined"
-            size="small"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          /> */}
-
           <TextField
             select
             name="category"
@@ -87,15 +75,6 @@ export const TrackingForm = () => {
               </MenuItem>
             ))}
           </TextField>
-          {/* <TextField label="Category" select variant="outlined" size="small">
-            {['Food', 'Transport', 'Entertainment', 'Utilities', 'Health'].map(
-              (category) => (
-                <MenuItem key={category} value={category}>
-                  {category}
-                </MenuItem>
-              )
-            )}
-          </TextField> */}
           <TextField
             name="amount"
             label="Amount"
@@ -107,16 +86,10 @@ export const TrackingForm = () => {
             helperText={touched.amount && errors.amount}
             required
           />
-          {/* <TextField
-            label="Amount"
-            type="number"
-            variant="outlined"
-            size="small"
-          /> */}
           <Button variant="contained" color="primary">
             Add Expense
           </Button>
-        </Box>
+        </InputContainer>
       )}
     </Formik>
   );

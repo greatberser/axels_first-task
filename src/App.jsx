@@ -1,16 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
 import { Box } from '@mui/material';
-import HomePage from './pages/Home';
-import FormPage from './pages/FormPage';
-import Navbar from './components/Navbar';
+import { Navbar } from './components';
+import { Home, FormPage } from './pages';
 
 function App() {
   return (
     <>
       <Navbar />
-      <Box sx={{ pt: '64px', px: 2, minHeight: '100vh', width: '100%' }}>
+      <Box>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Home />} />
           <Route path="/form" element={<FormPage />} />
         </Routes>
       </Box>

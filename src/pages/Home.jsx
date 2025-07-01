@@ -1,14 +1,16 @@
-import Chart from '../components/Chart';
-import FilterPanel from '../components/FilterPanel';
-import List from '../components/List';
+import { FilterPanel, List, Chart } from '../components';
+import styled from 'styled-components';
+const HomeContainer = styled.div`
+  padding: 20px 0;
+`;
 
 export const HomePage = () => {
   return (
-    <>
+    <HomeContainer>
       <FilterPanel />
       <List />
       <Chart />
-    </>
+    </HomeContainer>
   );
 };
 

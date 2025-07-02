@@ -8,33 +8,29 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import styled from 'styled-components';
+import { RootState } from '../../store/store';
+import { ChartContainer } from '../../styled/Chart';
 
-const ChartContainer = styled.div`
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  color: #333;
-  margin-top: 100px;
-`;
+type ChartData = {
+  date: string;
+  amount: number;
+};
 
-const Chart = () => {
-  const expenses = useSelector((state) => state.expenses.list);
+const Chart: React.FC = () => {
+  const expenses = useSelector((state: RootState) => state.expenses.list);
 
-  const grouped = expenses.reduce((acc, exp) => {
+  const grouped = expenses.reduce((acc: { [key: string]: number }, exp) => {
     const date = exp.date;
     acc[date] = (acc[date] || 0) + Number(exp.amount);
     return acc;
   }, {});
 
-  const data = Object.entries(grouped).map(([date, amount]) => ({
+  const data: ChartData[] = Object.entries(grouped).map(([date, amount]) => ({
     date,
     amount,
   }));
 
-  data.sort((a, b) => new Date(a.date) - new Date(b.date));
+  data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
   return (
     <ChartContainer>

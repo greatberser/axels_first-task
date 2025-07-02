@@ -1,17 +1,14 @@
 import { Box, Button, MenuItem, TextField } from '@mui/material';
 import { useState } from 'react';
-import styled from 'styled-components';
+import { FilterRow, SelectInput } from '../../styled/FilterPanel';
+export type FilterData = {
+  date: string;
+  category: string;
+};
 
-const FilterRow = styled(Box)`
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  margin-bottom: 16px;
-`;
-
-const SelectInput = styled(TextField)`
-  width: 200px;
-`;
+type FilterPanelProps = {
+  onFilter: (data: FilterData) => void;
+};
 
 const categories = [
   'All',
@@ -22,7 +19,7 @@ const categories = [
   'Health',
 ];
 
-const FilterPanel = ({ onFilter }) => {
+const FilterPanel: React.FC<FilterPanelProps> = ({ onFilter }) => {
   const [date, setDate] = useState('');
   const [category, setCategory] = useState('All');
 
@@ -37,6 +34,9 @@ const FilterPanel = ({ onFilter }) => {
     <FilterRow>
       <TextField
         type="date"
+        label="Date"
+        InputLabelProps={{ shrink: true }}
+        id="date"
         variant="outlined"
         size="small"
         value={date}
@@ -45,6 +45,7 @@ const FilterPanel = ({ onFilter }) => {
       <SelectInput
         select
         label="Category"
+        id="category"
         variant="outlined"
         size="small"
         value={category}

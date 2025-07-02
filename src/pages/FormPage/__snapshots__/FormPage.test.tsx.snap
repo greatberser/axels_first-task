@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`FormPage renders without crashing 1`] = `
+<DocumentFragment>
+  <div>
+    FormPage Component
+  </div>
+</DocumentFragment>
+`;

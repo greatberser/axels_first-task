@@ -1,24 +1,8 @@
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Box,
-  Link as MuiLink,
-} from '@mui/material';
+import { AppBar, Typography, Link as MuiLink } from '@mui/material';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { StyledToolbar, NavbarContainer } from '../../styled/Navbar';
 
-const StyledToolbar = styled(Toolbar)`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const NavbarContainer = styled.div`
-  display: flex;
-  gap: 16px;
-`;
-
-const Navbar = () => {
+const Navbar: React.FC = () => {
   return (
     <AppBar position="static">
       <StyledToolbar>

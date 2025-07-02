@@ -1,6 +1,6 @@
 import { all, put, takeEvery } from 'redux-saga/effects';
 
-function apiAddExpenses(data) {
+function apiAddExpenses(data: any) {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(data);
@@ -8,7 +8,7 @@ function apiAddExpenses(data) {
   });
 }
 
-function* sagaAddExpenses(action) {
+function* sagaAddExpenses(action: any) {
   console.log('sagaAddExpenses', action.payload);
   yield put({ type: 'ADD_EXPENSE_SUCCESS', payload: action.payload });
 }

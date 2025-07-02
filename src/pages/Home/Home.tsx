@@ -1,13 +1,21 @@
 import { useState } from 'react';
-import { FilterPanel, List, Chart } from '../components';
-import styled from 'styled-components';
+import { FilterPanel, List, Chart } from '../../components';
 import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import type { Expense } from '../../store/ducks/expenses';
+import styled from 'styled-components';
+
 const HomeContainer = styled.div`
   padding: 20px 0;
 `;
 
-export const HomePage = () => {
-  const all = useSelector((state) => state.expenses.list);
+type FilterState = {
+  date: string;
+  category: string;
+};
+
+export const HomePage: React.FC = () => {
+  const all = useSelector((state: RootState) => state.expenses.list);
   const [filters, setFilters] = useState({ date: '', category: 'All' });
 
   const filtered = all
@@ -16,9 +24,8 @@ export const HomePage = () => {
     )
     .filter((exp) => filters.date === '' || exp.date === filters.date);
 
-  const applyFilters = ({ date, category }) => {
+  const applyFilters = ({ date, category }: FilterState) => {
     setFilters({ date, category });
-    console.log('Filters', date, category);
   };
 
   return (

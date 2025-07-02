@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
+// @ts-ignore
 import rootSaga from './saga';
 import expensesReducer from './ducks/expenses';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     expenses: expensesReducer,
   },
@@ -14,5 +15,9 @@ const store = configureStore({
 });
 
 sagaMiddleware.run(rootSaga);
+
+// Типи для useSelector та useDispatch
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 export default store;

@@ -6,7 +6,7 @@ exports[`TrackingForm renders without crashing 1`] = `
     class="sc-bRKDuR itjdjq"
   >
     <div
-      class="MuiFormControl-root MuiTextField-root sc-hvigdm kiAAsW css-1xp5r68-MuiFormControl-root-MuiTextField-root"
+      class="MuiFormControl-root MuiTextField-root sc-hvigdm cDiwQx css-1xp5r68-MuiFormControl-root-MuiTextField-root"
     >
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-19qnlrw-MuiFormLabel-root-MuiInputLabel-root"

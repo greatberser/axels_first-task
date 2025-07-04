@@ -2,6 +2,8 @@ export const colors = {
   primary: '#333',
   success: '#4CAF50',
   backgroundItem: '#f9f9f9',
+  background: '#f5faff',
+  blue: '#1976d2',
   hover: '#e9e9e9',
 };
 

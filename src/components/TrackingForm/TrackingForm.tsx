@@ -41,7 +41,6 @@ const TrackingForm: React.FC = () => {
       })
     );
     actions.resetForm();
-    console.log('Submitting:', values);
   };
 
   return (

@@ -30,7 +30,7 @@ export const LeftSide = styled.div`
 export const Category = styled(ListItemText)`
   && {
     font-weight: bold;
-    color: #333;
+    color: ${colors.primary};
     font-size: ${fontSizes.medium};
   }
 `;

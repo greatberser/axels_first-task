@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import type { Expense } from '../../store/ducks/expenses';
 import styled from 'styled-components';
+import { MonthTotals } from '../../components/MonthTotals/MonthTotals';
 
 const HomeContainer = styled.div`
   padding: 20px 0;
@@ -28,10 +29,21 @@ export const HomePage: React.FC = () => {
     setFilters({ date, category });
   };
 
+  const totalsByMonth = all.reduce((acc: { [key: string]: number }, exp) => {
+    const month = exp.date.slice(0, 7); // YYYY-MM format
+    acc[month] = (acc[month] || 0) + exp.amount;
+    return acc;
+  }, {});
+
+  const monthTotalArray = Object.entries(totalsByMonth).sort(
+    ([a], [b]) => new Date(a).getTime() - new Date(b).getTime()
+  );
+
   return (
     <HomeContainer>
       <FilterPanel onFilter={applyFilters} />
       <List expenses={filtered} />
+      <MonthTotals totals={monthTotalArray} />
       <Chart />
     </HomeContainer>
   );

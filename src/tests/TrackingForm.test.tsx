@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import TrackingForm from './TrackingForm';
+import TrackingForm from '../components/TrackingForm/TrackingForm';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from '../../store/store';
+import { store } from '../store/store';
 
 describe('TrackingForm', () => {
-  it('renders without crashing', () => {
+  it('should match a snapshot', () => {
     const { asFragment } = render(
       <Provider store={store}>
         <MemoryRouter>
@@ -18,26 +18,38 @@ describe('TrackingForm', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('show errors when form is submitted with empty fields', async () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <TrackingForm />
-        </MemoryRouter>
-      </Provider>
-    );
+  describe('when form is submitted with empty fields', () => {
+    beforeEach(async () => {
+      render(
+        <Provider store={store}>
+          <MemoryRouter>
+            <TrackingForm />
+          </MemoryRouter>
+        </Provider>
+      );
 
-    const submitButton = screen.getByRole('button', { name: /add expense/i });
-    await userEvent.click(submitButton);
+      const submitButton = screen.getByRole('button', { name: /add expense/i });
+      await userEvent.click(submitButton);
+    });
 
-    expect(
-      await screen.findByText(/Category is required/i)
-    ).toBeInTheDocument();
-    expect(await screen.findByText(/Amount is required/i)).toBeInTheDocument();
-    expect(await screen.findByText(/Date is required/i)).toBeInTheDocument();
+    it('should show error for empty category', async () => {
+      expect(
+        await screen.findByText(/Category is required/i)
+      ).toBeInTheDocument();
+    });
+
+    it('should show error for empty amount', async () => {
+      expect(
+        await screen.findByText(/Amount is required/i)
+      ).toBeInTheDocument();
+    });
+
+    it('should show error for empty date', async () => {
+      expect(await screen.findByText(/Date is required/i)).toBeInTheDocument();
+    });
   });
 
-  it('shows error for negative amount', async () => {
+  it('should shows error for negative amount', async () => {
     render(
       <Provider store={store}>
         <MemoryRouter>
@@ -57,7 +69,7 @@ describe('TrackingForm', () => {
       await screen.findByText(/Amount must be a positive number/i)
     ).toBeInTheDocument();
   });
-  it('shows error for invalid date format', async () => {
+  it('should shows error for invalid date format', async () => {
     render(
       <Provider store={store}>
         <MemoryRouter>

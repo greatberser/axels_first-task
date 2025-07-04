@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import FilterPanel from './FilterPanel';
+import FilterPanel from '../components/FilterPanel/FilterPanel';
 
 describe('FilterPanel', () => {
-  it('render correctly', () => {
+  it('should match a snapshot', () => {
     const { asFragment } = render(<FilterPanel onFilter={jest.fn()} />);
     expect(asFragment()).toMatchSnapshot();
   });

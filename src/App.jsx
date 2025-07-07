@@ -1,16 +1,18 @@
-import './App.css';
-import FilterPanel from './components/FilterPanel';
-import ExpenseList from './components/List';
-import Chart from './components/Chart';
-import Form from './components/Form';
+import { Routes, Route } from 'react-router-dom';
+import { Box } from '@mui/material';
+import { Navbar } from './components';
+import { Home, FormPage } from './pages';
 
 function App() {
   return (
     <>
-      <FilterPanel />
-      <ExpenseList />
-      <Chart />
-      <Form />
+      <Navbar />
+      <Box>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/form" element={<FormPage />} />
+        </Routes>
+      </Box>
     </>
   );
 }

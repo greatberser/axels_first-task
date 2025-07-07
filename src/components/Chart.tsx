@@ -8,8 +8,9 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { RootState } from '../../store/store';
-import { ChartContainer } from '../../styled/Chart';
+
+import { RootState } from '../store/store';
+import { ChartContainer } from '../styled/Chart';
 
 type ChartData = {
   date: string;

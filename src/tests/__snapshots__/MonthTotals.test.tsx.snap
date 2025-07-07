@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`MonthTotals renders list of month totals 1`] = `
+exports[`MonthTotals should render list of month totals 1`] = `
 <DocumentFragment>
   <div>
     MonthTotals Component

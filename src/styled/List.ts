@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ListItem, ListItemText, Typography } from '@mui/material';
-import { colors, fontSizes } from '../theme';
+import { colors, fontSizes } from './theme';
 
 export const EmptyMess = styled.h4`
   text-align: center;

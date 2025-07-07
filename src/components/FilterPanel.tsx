@@ -1,6 +1,8 @@
-import { Box, Button, MenuItem, TextField } from '@mui/material';
 import { useState } from 'react';
-import { FilterRow, SelectInput } from '../../styled/FilterPanel';
+import { Button, MenuItem, TextField } from '@mui/material';
+
+import { FilterRow, SelectInput } from '../styled/FilterPanel';
+
 export type FilterData = {
   date: string;
   category: string;

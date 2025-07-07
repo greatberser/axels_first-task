@@ -1,5 +1,7 @@
-import { List, ListItem, ListItemText, Typography } from '@mui/material';
-import type { Expense } from '../../store/ducks/expenses';
+import { List } from '@mui/material';
+
+import type { Expense } from '../store/ducks/expenses';
+
 import {
   StyledItem,
   LeftSide,
@@ -7,7 +9,7 @@ import {
   DateText,
   AmountText,
   EmptyMess,
-} from '../../styled/List';
+} from '../styled/List';
 
 type ExpenseListProps = {
   expenses: Expense[];

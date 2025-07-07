@@ -4,7 +4,7 @@ import {
   TotalList,
   TotalSum,
   TotalsItem,
-} from '../../styled/MonthTotals';
+} from '../styled/MonthTotals';
 
 type Props = {
   totals: [string, number][];
@@ -25,3 +25,5 @@ export const MonthTotals: React.FC<Props> = ({ totals }) => {
     </MonthTotalsContainer>
   );
 };
+
+export default MonthTotals;

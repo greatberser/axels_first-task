@@ -11,9 +11,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "@devexpress/dx-react-core": "^4.0.11",
+    "@devexpress/dx-react-grid": "^4.0.11",
+    "@devexpress/dx-react-grid-material-ui": "^4.0.11",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.1.2",
+    "@mui/x-data-grid": "^8.7.0",
     "@reduxjs/toolkit": "^2.8.2",
     "formik": "^2.4.6",
     "react": "^19.1.0",
@@ -40,6 +44,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.2.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^30.0.3",
     "jest-environment-jsdom": "^30.0.2",
     "ts-jest": "^29.4.0",

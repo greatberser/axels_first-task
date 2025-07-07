@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`List should match a snapshot 1`] = `
+<DocumentFragment>
+  <h4
+    class="sc-bRKDuR dIHunt"
+  >
+    No found
+  </h4>
+</DocumentFragment>
+`;

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import { addExpenseRequest } from '../store/ducks/expenses';
 
-import { InputContainer } from '../styled/TrackingForm';
+import { InputContainer, StyledTextField } from '../styled/TrackingForm';
 
 const categories = [
   'Food',

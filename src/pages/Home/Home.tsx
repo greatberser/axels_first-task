@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import { FilterPanel, List, Chart, MonthTotals } from '../../components';
+import { FilterPanel, Chart, MonthTotals, TableGrid } from '../../components';
 import { RootState } from '../../store/store';
 
 const HomeContainer = styled.div`
@@ -41,7 +41,7 @@ export const HomePage: React.FC = () => {
   return (
     <HomeContainer>
       <FilterPanel onFilter={applyFilters} />
-      <List expenses={filtered} />
+      <TableGrid expense={filtered} />
       <MonthTotals totals={monthTotalArray} />
       <Chart />
     </HomeContainer>

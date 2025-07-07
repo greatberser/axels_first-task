@@ -15,10 +15,11 @@ export type ExpensesState = {
 
 const initialState: ExpensesState = {
   list: [
-    { id: 1, category: 'Food', amount: 50, date: '2025-01-01' },
-    { id: 2, category: 'Transport', amount: 20, date: '2025-01-02' },
-    { id: 3, category: 'Entertainment', amount: 100, date: '2025-01-03' },
-    { id: 4, category: 'Utilities', amount: 75, date: '2025-01-04' },
+    { id: 1, category: 'Food', amount: 15, date: '2024-04-01' },
+    { id: 2, category: 'Food', amount: 50, date: '2025-01-01' },
+    { id: 3, category: 'Transport', amount: 20, date: '2025-01-02' },
+    { id: 4, category: 'Entertainment', amount: 100, date: '2025-01-03' },
+    { id: 5, category: 'Utilities', amount: 75, date: '2025-01-04' },
   ],
   status: 'idle',
   error: null,

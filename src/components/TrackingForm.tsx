@@ -1,7 +1,7 @@
 import { Button, TextField, MenuItem } from '@mui/material';
-import { Formik, Form, FormikHelpers } from 'formik';
-import { useDispatch } from 'react-redux';
+import { Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
 
 import { addExpenseRequest } from '../store/ducks/expenses';
 
@@ -60,11 +60,14 @@ const TrackingForm: React.FC = () => {
         handleBlur,
       }) => (
         <InputContainer as="form" onSubmit={handleSubmit}>
-          <StyledTextField
+          <TextField
             name="date"
             id="date"
             type="date"
             label="Date"
+            InputLabelProps={{
+              shrink: true,
+            }}
             value={values.date}
             onChange={handleChange}
             onBlur={handleBlur}

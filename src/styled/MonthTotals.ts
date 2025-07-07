@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, fontSizes } from '../theme';
+import { colors, fontSizes } from './theme';
 
 export const MonthTotalsContainer = styled.div`
   margin: 20px 0;

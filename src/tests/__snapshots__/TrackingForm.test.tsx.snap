@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`TrackingForm should render without crashing 1`] = `
+exports[`TrackingForm should match a snapshot 1`] = `
 <DocumentFragment>
   <form
     class="sc-bRKDuR itjdjq"

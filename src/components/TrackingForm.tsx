@@ -2,8 +2,10 @@ import { Button, TextField, MenuItem } from '@mui/material';
 import { Formik, Form, FormikHelpers } from 'formik';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-import { addExpenseRequest } from '../../store/ducks/expenses';
-import { InputContainer, StyledTextField } from '../../styled/TrackingForm';
+
+import { addExpenseRequest } from '../store/ducks/expenses';
+
+import { InputContainer, StyledTextField } from '../styled/TrackingForm';
 
 const categories = [
   'Food',

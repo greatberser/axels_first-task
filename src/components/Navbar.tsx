@@ -1,6 +1,7 @@
 import { AppBar, Typography, Link as MuiLink } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { StyledToolbar, NavbarContainer } from '../../styled/Navbar';
+
+import { StyledToolbar, NavbarContainer } from '../styled/Navbar';
 
 const Navbar: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`Chart renders without crashing 1`] = `
+exports[`Chart should match a snapshot 1`] = `
 <DocumentFragment>
   <div>
     Chart Component

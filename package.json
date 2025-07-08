@@ -8,9 +8,11 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "server": "node server.js"
   },
   "dependencies": {
+    "@apollo/client": "^3.13.8",
     "@devexpress/dx-react-core": "^4.0.11",
     "@devexpress/dx-react-grid": "^4.0.11",
     "@devexpress/dx-react-grid-material-ui": "^4.0.11",
@@ -19,7 +21,9 @@
     "@mui/material": "^7.1.2",
     "@mui/x-data-grid": "^8.7.0",
     "@reduxjs/toolkit": "^2.8.2",
+    "apollo-server": "^3.13.0",
     "formik": "^2.4.6",
+    "graphql": "^16.11.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-redux": "^9.2.0",

@@ -1,12 +1,15 @@
-import { useState } from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-
-import type { Expense } from '../store/ducks/expenses';
-
 import { TableGridDiv } from '../styled/TableGrid';
 
+type Expense = {
+  id: number;
+  date: string;
+  category: string;
+  amount: number;
+};
+
 type TableGridProps = {
-  expense: Expense[];
+  expenses: Expense[];
 };
 
 const columns: GridColDef[] = [
@@ -15,27 +18,19 @@ const columns: GridColDef[] = [
   { field: 'amount', headerName: 'Amount', width: 200, type: 'number' },
 ];
 
-export const TableGrid: React.FC<TableGridProps> = ({ expense }) => {
-  const [paginationModel, setPaginationModel] = useState({
-    pageSize: 5,
-    page: 0,
-  });
-  return (
-    <TableGridDiv>
-      <DataGrid
-        rows={expense}
-        columns={columns}
-        pagination
-        paginationModel={paginationModel}
-        onPaginationModelChange={setPaginationModel}
-        disableRowSelectionOnClick
-        disableColumnMenu
-        disableColumnSorting
-        disableColumnResize
-        getRowId={(row) => row.id.toString()}
-      />
-    </TableGridDiv>
-  );
-};
+const TableGrid: React.FC<TableGridProps> = ({ expenses }) => (
+  <TableGridDiv>
+    <DataGrid
+      rows={expenses}
+      columns={columns}
+      pageSizeOptions={[5, 10, 20]}
+      disableRowSelectionOnClick
+      disableColumnMenu
+      disableColumnSorting
+      disableColumnResize
+      getRowId={(row) => row.id.toString()}
+    />
+  </TableGridDiv>
+);
 
 export default TableGrid;

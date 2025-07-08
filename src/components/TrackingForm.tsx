@@ -1,9 +1,9 @@
 import { Button, TextField, MenuItem } from '@mui/material';
 import { Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
+import { useMutation } from '@apollo/client';
 
-import { addExpenseRequest } from '../store/ducks/expenses';
+import { ADD_EXPENSE } from '../graphql/queries';
 
 import { InputContainer, StyledTextField } from '../styled/TrackingForm';
 
@@ -32,17 +32,22 @@ const validationSchema = Yup.object().shape({
 });
 
 const TrackingForm: React.FC = () => {
-  const dispatch = useDispatch();
+  const [addExpense] = useMutation(ADD_EXPENSE);
 
   const onSubmit = (values: FormValues, actions: FormikHelpers<FormValues>) => {
-    dispatch(
-      addExpenseRequest({
-        ...values,
-        amount: Number(values.amount),
-        id: Date.now(),
-      })
-    );
-    actions.resetForm();
+    try {
+      addExpense({
+        variables: {
+          date: values.date,
+          category: values.category,
+          amount: parseFloat(values.amount.toString()),
+        },
+      });
+      actions.resetForm();
+    } catch (error) {
+      console.error('Error adding expense:', error);
+      actions.setSubmitting(false);
+    }
   };
 
   return (

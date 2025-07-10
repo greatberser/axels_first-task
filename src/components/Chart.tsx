@@ -12,11 +12,14 @@ import {
 import { GET_EXPENSES } from '../graphql/queries';
 import { ChartContainer } from '../styled/Chart';
 
-type ChartData = {
+export type ChartData = {
   date: string;
   amount: number;
 };
 
+type ChartProps = {
+  data: ChartData[];
+};
 const Chart: React.FC = () => {
   const { data, loading, error } = useQuery(GET_EXPENSES);
 

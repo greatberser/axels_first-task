@@ -3,9 +3,8 @@ import { Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { useMutation } from '@apollo/client';
 
-import { ADD_EXPENSE } from '../graphql/queries';
-
-import { InputContainer, StyledTextField } from '../styled/TrackingForm';
+import { ADD_EXPENSE } from '../../graphql/queries';
+import { InputContainer } from '../../styled/TrackingForm';
 
 const categories = [
   'Food',

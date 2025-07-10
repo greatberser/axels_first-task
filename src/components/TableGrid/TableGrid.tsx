@@ -1,5 +1,5 @@
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { TableGridDiv } from '../styled/TableGrid';
+import { TableGridDiv } from '../../styled/TableGrid';
 
 type Expense = {
   id: number;

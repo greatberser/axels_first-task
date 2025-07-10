@@ -4,7 +4,7 @@ import {
   TotalList,
   TotalSum,
   TotalsItem,
-} from '../styled/MonthTotals';
+} from '../../styled/MonthTotals';
 
 type Props = {
   totals: [string, number][];

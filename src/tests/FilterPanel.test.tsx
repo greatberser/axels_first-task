@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import FilterPanel from '../components/FilterPanel';
+import FilterPanel from '../components/FilterPanel/FilterPanel';
 
 describe('FilterPanel', () => {
   it('should match a snapshot', () => {

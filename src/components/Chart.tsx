@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useQuery } from '@apollo/client';
 import {
   CartesianGrid,
   LineChart,
@@ -9,35 +9,50 @@ import {
   YAxis,
 } from 'recharts';
 
-import { RootState } from '../store/store';
+import { GET_EXPENSES } from '../graphql/queries';
 import { ChartContainer } from '../styled/Chart';
 
-type ChartData = {
+export type ChartData = {
   date: string;
   amount: number;
 };
 
+type ChartProps = {
+  data: ChartData[];
+};
 const Chart: React.FC = () => {
-  const expenses = useSelector((state: RootState) => state.expenses.list);
+  const { data, loading, error } = useQuery(GET_EXPENSES);
 
-  const grouped = expenses.reduce((acc: { [key: string]: number }, exp) => {
-    const date = exp.date;
-    acc[date] = (acc[date] || 0) + Number(exp.amount);
-    return acc;
-  }, {});
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
-  const data: ChartData[] = Object.entries(grouped).map(([date, amount]) => ({
-    date,
-    amount,
-  }));
+  const expenses = data?.expenses;
 
-  data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  const grouped = expenses.reduce(
+    (acc: { [key: string]: number }, exp: any) => {
+      const date = exp.date;
+      acc[date] = (acc[date] || 0) + Number(exp.amount);
+      return acc;
+    },
+    {}
+  );
+
+  const chartData: ChartData[] = Object.entries(grouped).map(
+    ([date, amount]) => ({
+      date,
+      amount: parseFloat((amount as number).toFixed(2)),
+    })
+  );
+
+  chartData.sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+  );
 
   return (
     <ChartContainer>
       <h2>Chart Component Placeholder</h2>
       <ResponsiveContainer>
-        <LineChart data={data}>
+        <LineChart data={chartData}>
           <CartesianGrid strokeDasharray="5 5" />
           <XAxis dataKey="date" />
           <YAxis />

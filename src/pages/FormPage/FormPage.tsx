@@ -1,4 +1,4 @@
-import TrackingForm from '../../components/TrackingForm';
+import TrackingForm from '../../components/TrackingForm/TrackingForm';
 
 export const FormPage: React.FC = () => <TrackingForm />;
 
